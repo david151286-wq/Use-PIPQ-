@@ -106,7 +106,7 @@ summary{font-family:var(--fr);font-size:16px;font-weight:600}
 #upd{position:fixed;z-index:12;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:14px;background:#01224d;color:#fff;font-size:15px;box-shadow:0 6px 20px rgba(0,0,0,.25)}#upd button{min-height:40px;padding:0 16px;border:0;border-radius:20px;background:#e6c27a;color:#01224d;font:600 15px system-ui;cursor:pointer}
 .vdt{font:400 calc(var(--fs,18)*1px)/1.6 var(--fr);margin:8px 0}.vdr{color:var(--muted);font-size:15px;margin:0 0 12px}
 .av{border-top:1px solid var(--line);padding:10px 0}.av:first-of-type{border-top:0}.av b{display:block}.av small{color:var(--muted)}
-#tm{margin:12px 0}
+.kwrow{margin:12px 0}.kw{display:inline-flex;align-items:center;gap:8px}.kw[aria-expanded=true]{background:var(--pine);color:#fff;border-color:var(--pine)}#tm{margin:0 0 12px}.tg{display:flex;flex-wrap:wrap;gap:8px}.tg .chip[aria-pressed=true]{background:var(--pine);color:#fff;border-color:var(--pine)}
 .avimg{display:block;max-width:100%;max-height:420px;object-fit:cover;border-radius:12px;margin:8px 0}
 .f{display:flex;flex-direction:column;gap:6px;margin:10px 0}.f label{font-size:14px;color:var(--muted)}
 .in{width:100%;box-sizing:border-box;padding:12px;border:1px solid var(--line);border-radius:12px;background:transparent;color:inherit;font:16px system-ui}
@@ -138,7 +138,7 @@ summary{font-family:var(--fr);font-size:16px;font-weight:600}
   <div class="eyebrow" id="bver"></div>
   <h1>Bíblia</h1>
   <div class="chips" id="bvs" style="margin-top:10px"><button class="chip" data-v="ara">ARA</button><button class="chip" data-v="naa">NAA</button></div>
-  <div id="bhome"><div id="bcont"></div><label class="search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="bq" type="search" placeholder="Livro, referência (jo 3:16) ou palavra" aria-label="Buscar na Bíblia"></label><div class="chips" id="tm" aria-label="Temas"></div><div id="br"></div><div id="bl"></div></div>
+  <div id="bhome"><div id="bcont"></div><label class="search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="bq" type="search" placeholder="Livro, referência ou palavra" aria-label="Buscar na Bíblia"></label><div class="kwrow"><button class="chip kw" id="kwb" aria-expanded="false" aria-controls="tm"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>Palavras-chave</button></div><div class="card" id="tm" hidden></div><div id="br"></div><div id="bl"></div></div>
   <div id="bc" hidden></div>
 </section>
 
@@ -235,12 +235,15 @@ const bh=(t,a,b)=>`<h2>${t}</h2>`+BN.slice(a,b).map((n,k)=>{const i=a+k;return `
 $("#bl").innerHTML=bh("Antigo Testamento",0,39)+bh("Novo Testamento",39,66);
 $$("#bvs .chip").forEach(b=>b.onclick=()=>{bv=b.dataset.v;store.set("pipq-ver",bv);route()});
 const NX={};
-async function tema(n,btn){const R=$("#br"),L=$$("#bl details,#bl h2");$("#bq").value="";$$("#tm .chip").forEach(b=>b.setAttribute("aria-pressed",b===btn&&btn.getAttribute("aria-pressed")!=="true"));
-  if(btn&&btn.getAttribute("aria-pressed")==="false"){R.innerHTML="";L.forEach(x=>x.hidden=false);return}
-  try{const [d,T]=await Promise.all([load("biblia-"+bv),load("temas")]);L.forEach(x=>x.hidden=true);
-    R.innerHTML=`<h2>${esc(n)}</h2>`+T[n].map(([i,c,v1,v2])=>`<a class="res" href="${ref(i,c,v1)}"><b>${BN[i]} ${c}:${v1}${v2?"-"+v2:""}</b><span>${esc(d[i].chapters[c-1].slice(v1-1,v2||v1).join(" "))}</span></a>`).join("")}catch(e){fail(R)}}
-load("temas").then(T=>{$("#tm").innerHTML=Object.keys(T).map(k=>`<button class="chip" aria-pressed="false">${k}</button>`).join("");$$("#tm .chip").forEach(b=>b.onclick=()=>tema(b.textContent,b))}).catch(()=>{});let bt;$("#bq").oninput=()=>{clearTimeout(bt);bt=setTimeout(bsearch,200)};
-async function bsearch(){
+const kwOpen=o=>{$("#tm").hidden=!o;$("#kwb").setAttribute("aria-expanded",o)};
+function kwClear(){$("#br").innerHTML="";$$("#bl details,#bl h2").forEach(x=>x.hidden=false);$$("#tm .chip").forEach(b=>b.setAttribute("aria-pressed","false"))}
+async function tema(n){const R=$("#br"),L=$$("#bl details,#bl h2");$("#bq").value="";$$("#tm .chip").forEach(b=>b.setAttribute("aria-pressed",b.textContent===n));
+  try{const [d,T]=await Promise.all([load("biblia-"+bv),load("temas")]);L.forEach(x=>x.hidden=true);kwOpen(false);
+    R.innerHTML=`<div class="tools" style="justify-content:space-between"><h2 style="margin:0">${esc(n)}</h2><button class="chip" data-kx>Limpar</button></div>`+T[n].map(([i,c,v1,v2])=>`<a class="res" href="${ref(i,c,v1)}"><b>${BN[i]} ${c}:${v1}${v2?"-"+v2:""}</b><span>${esc(d[i].chapters[c-1].slice(v1-1,v2||v1).join(" "))}</span></a>`).join("");scrollTo(0,0)}catch(e){fail(R)}}
+$("#kwb").onclick=()=>kwOpen($("#tm").hidden);
+document.addEventListener("click",e=>{if(e.target.closest("[data-kx]"))kwClear()});
+load("temas").then(T=>{$("#tm").innerHTML='<div class="tg">'+Object.keys(T).map(k=>`<button class="chip" aria-pressed="false">${k}</button>`).join("")+"</div>";$$("#tm .chip").forEach(b=>b.onclick=()=>tema(b.textContent))}).catch(()=>{$("#kwb").hidden=true});let bt;$("#bq").oninput=()=>{clearTimeout(bt);bt=setTimeout(bsearch,200)};
+async function bsearch(){kwOpen(false);$$("#tm .chip").forEach(b=>b.setAttribute("aria-pressed","false"));
   const q=norm($("#bq").value.trim()),R=$("#br"),H=$$("#bl h2"),L=$$("#bl details");R.innerHTML="";L.forEach(d=>d.hidden=false);H.forEach(h=>h.hidden=false);
   if(!q)return;
   const m=q.match(/^(.+?)\s+(\d+)(?:[:.,\s]+(\d+))?$/),find=t=>t==="jo"?42:BN.findIndex(n=>norm(n).startsWith(t));

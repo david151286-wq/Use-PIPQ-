@@ -48,7 +48,7 @@ As perguntas 176, 177 e 192 do Catecismo Maior vieram da apostila do Rev. Olivar
 ## Avisos, versículo do dia, temas e tela acesa (versão 7)
 - **Avisos:** edite o arquivo `avisos.js` (tem um exemplo comentado dentro). Basta publicar o arquivo novo: os avisos atualizam sozinhos nos celulares, sem mexer no número da versão. O campo `ate` faz o aviso sumir na data indicada.
 - **Versículo do dia:** 60 versículos (ARA), um por dia, em `data/versiculos.js`.
-- **Temas na Bíblia:** 12 temas em `data/temas.js` (Ansiedade, Perdão, Fé, Esperança, Amor, Oração, Gratidão, Sabedoria, Salvação, Coragem, Consolo, Família). O texto vem da própria Bíblia do app, na versão escolhida.
+- **Palavras-chave na Bíblia (botão abaixo da busca):** 12 temas em `data/temas.js` (Ansiedade, Perdão, Fé, Esperança, Amor, Oração, Gratidão, Sabedoria, Salvação, Coragem, Consolo, Família). O texto vem da própria Bíblia do app, na versão escolhida.
 - **Tela acesa:** botão na leitura da Bíblia e dos hinos (aparece onde o aparelho permite).
 - Se mudar `temas.js` ou `versiculos.js`, aumente o `DV` em `sw.js`.
 
