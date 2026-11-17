@@ -14,103 +14,321 @@
 <meta name="mobile-web-app-capable" content="yes">
 <title>PIPQ — Primeira Igreja Presbiteriana em Queimados</title>
 <style>
-:root{color-scheme:light;--page:#f5f3ed;--surface:#fffefa;--soft:#eeeee7;--ink:#1c2430;--muted:#5b6270;--line:#e0dfd6;--pine:#143a73;--pine-soft:#dde6f4;--gold:#8f6a2f;--on-pine:#fff;--h1:#01224d;--h2:#143a73;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--page:#0f1626;--surface:#172036;--soft:#1f2a44;--ink:#edf0e8;--muted:#aeb8cc;--line:#2d3a58;--pine:#9fc0f0;--pine-soft:#26344d;--gold:#d5b578;--on-pine:#0f1626;--h1:#12306a;--h2:#1d4a8f}}
-:root[data-theme="dark"]{color-scheme:dark;--page:#0f1626;--surface:#172036;--soft:#1f2a44;--ink:#edf0e8;--muted:#aeb8cc;--line:#2d3a58;--pine:#9fc0f0;--pine-soft:#26344d;--gold:#d5b578;--on-pine:#0f1626;--h1:#12306a;--h2:#1d4a8f}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--page);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:10}
-[hidden]{display:none!important}
-button,input{font:inherit;color:inherit}
-.app{max-width:480px;min-height:100dvh;margin:0 auto;padding-bottom:96px}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:10px}
-.brand strong{display:block;font:700 15px/1.2 Georgia,serif}
-.brand small{color:var(--muted);font-size:13px}
-.ib{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:none;cursor:pointer}
-.ib:hover{background:var(--soft)}
-svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-main{padding:16px}
-h1{margin:0;font:600 26px/1.2 Georgia,serif}
-h2{margin:24px 2px 10px;font:600 19px Georgia,serif}
-.eyebrow{color:var(--gold);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
-.lead{margin:6px 0 16px;color:var(--muted)}
-.hero{padding:18px;border-radius:16px;background:linear-gradient(125deg,var(--h1),var(--h2));color:#fff}
-.hero h2{margin:0 0 8px;color:#fff}
-.card{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.act{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);text-decoration:none;font-weight:600;cursor:pointer;text-align:left}
-.act svg{color:var(--pine)}
-.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(128,128,128,.25)}
-.row:last-child{border:0}
-.row span:last-child{opacity:.9;text-align:right}
-.hero .row{border-color:rgba(255,255,255,.25)}
-.search{display:flex;align-items:center;gap:10px;height:48px;padding:0 14px;margin:0 0 14px;border:1px solid var(--line);border-radius:13px;background:var(--surface)}
-.search input{flex:1;min-width:0;border:0;outline:0;background:none}
-.search input::placeholder{color:var(--muted)}
-.chips{display:flex;gap:8px;margin-bottom:12px}
-.chip{padding:9px 16px;border:1px solid var(--line);border-radius:22px;background:var(--surface);cursor:pointer;font-size:14px}
-.chip[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--on-pine)}
-details{margin-bottom:8px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-summary{display:flex;justify-content:space-between;align-items:center;min-height:48px;padding:10px 14px;font-weight:600;cursor:pointer}
-summary small{color:var(--muted);font-weight:400;font-size:13px}
-.ch{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:6px;padding:4px 12px 14px}
-.ch a{display:grid;place-items:center;height:42px;border-radius:10px;background:var(--pine-soft);color:var(--pine);font-weight:600;text-decoration:none}
-.song{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid var(--line);list-style:none}
-ul{margin:0;padding:0}
-.num{width:38px;color:var(--pine);font-weight:700;font-size:14px}
-.song div{flex:1;min-width:0}
-.song strong{display:block}
-.song small{color:var(--muted);font-size:13px}
-.star{width:44px;height:44px;display:grid;place-items:center;border:0;background:none;color:var(--muted);cursor:pointer}
-.star[aria-pressed="true"]{color:var(--gold)}
-.star[aria-pressed="true"] svg{fill:currentColor}
-.empty,.note{color:var(--muted);font-size:14px;padding:12px 2px}
-.tag{padding:3px 10px;border-radius:12px;background:var(--gold);color:var(--page);font-size:12px;font-weight:700}
-nav{position:fixed;z-index:6;bottom:0;left:50%;width:min(100%,480px);transform:translateX(-50%);display:flex;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line)}
-nav a{flex:1;display:grid;justify-items:center;gap:2px;padding:4px 0;color:var(--muted);font-size:12px;text-decoration:none}
-nav a[aria-current]{color:var(--pine);font-weight:700}
-#toast{position:fixed;z-index:11;left:50%;bottom:92px;max-width:88%;padding:10px 16px;transform:translate(-50%,10px);border-radius:22px;background:var(--ink);color:var(--page);font-size:14px;text-align:center;opacity:0;pointer-events:none;transition:.2s}
-#toast.show{opacity:1;transform:translate(-50%,0)}
-a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
-.mark{width:42px;height:42px;border-radius:10px;display:block;flex:none}
-.brand>div{min-width:0}.brand strong,.brand small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.song a{flex:1;display:flex;align-items:center;gap:10px;min-width:0;color:inherit;text-decoration:none}
-.num{width:auto!important;min-width:44px}
-a.chip{display:inline-block;color:inherit;text-decoration:none}
-.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 14px}.tools .chip{min-height:40px}
-.vs p{margin:0 0 .6em;padding:2px 6px;border-radius:8px;font:calc(var(--fs,18)*1px)/1.6 Georgia,serif}
-.vs sup{margin-right:5px;color:var(--gold);font:700 .6em system-ui}
-.vs p.sel{background:var(--pine-soft)}.vs p.hl{outline:2px solid var(--gold)}
-.lyr{white-space:pre-line;font:calc(var(--fs,18)*1px)/1.7 Georgia,serif}
-.pn{display:flex;justify-content:space-between;gap:8px;margin-top:18px}
-.res{display:block;padding:10px 4px;border-bottom:1px solid var(--line);color:inherit;text-decoration:none}.res span{display:block;color:var(--muted);font-size:14px}
-#bcont{margin-bottom:12px}.rt{margin:0 0 10px!important}
-a.row{color:inherit;text-decoration:none}.q{font:700 calc(var(--fs,18)*1px)/1.4 Georgia,serif;margin:0 0 12px}
 @font-face{font-family:"Fraunces";font-weight:600;font-style:normal;font-display:swap;src:url(fonts/fraunces-latin-600-normal.woff2) format("woff2")}
 @font-face{font-family:"Literata";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/literata-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"Literata";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/literata-latin-400-italic.woff2) format("woff2")}
 @font-face{font-family:"Literata";font-weight:600;font-style:normal;font-display:swap;src:url(fonts/literata-latin-600-normal.woff2) format("woff2")}
-:root{--fd:"Fraunces",Georgia,serif;--fb:"Literata",Georgia,serif;--fr:"Literata",Georgia,serif}
-html{background:var(--page)}
-.brand strong{font:600 15px/1.2 var(--fd)}
-h1{font:600 29px/1.15 var(--fd);letter-spacing:-.2px}
-h2{font:600 20px/1.25 var(--fd)}.rt{font:600 25px/1.2 var(--fd)!important}
-.eyebrow{font:600 13px var(--fb);letter-spacing:1.6px}
-.lead{font:italic 400 18px/1.45 var(--fb)}
-summary{font-family:var(--fr);font-size:16px;font-weight:600}
-.song strong{font-family:var(--fr);font-weight:600}
-.vs p,.lyr{font-family:var(--fr)}.q{font-family:var(--fr);font-weight:600}
-#upd{position:fixed;z-index:12;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:14px;background:#01224d;color:#fff;font-size:15px;box-shadow:0 6px 20px rgba(0,0,0,.25)}#upd button{min-height:40px;padding:0 16px;border:0;border-radius:20px;background:#e6c27a;color:#01224d;font:600 15px system-ui;cursor:pointer}
-.vdt{font:400 calc(var(--fs,18)*1px)/1.6 var(--fr);margin:8px 0}.vdr{color:var(--muted);font-size:15px;margin:0 0 12px}
-.av{border-top:1px solid var(--line);padding:10px 0}.av:first-of-type{border-top:0}.av b{display:block}.av small{color:var(--muted)}
-.kwrow{margin:12px 0}.kw{display:inline-flex;align-items:center;gap:8px}.kw[aria-expanded=true]{background:var(--pine);color:#fff;border-color:var(--pine)}#tm{margin:0 0 12px}.tg{display:flex;flex-wrap:wrap;gap:8px}.tg .chip[aria-pressed=true]{background:var(--pine);color:#fff;border-color:var(--pine)}
-.avimg{display:block;max-width:100%;max-height:420px;object-fit:cover;border-radius:12px;margin:8px 0}
-.f{display:flex;flex-direction:column;gap:6px;margin:10px 0}.f label{font-size:14px;color:var(--muted)}
-.in{width:100%;box-sizing:border-box;padding:12px;border:1px solid var(--line);border-radius:12px;background:transparent;color:inherit;font:16px system-ui}
+
+:root{
+  color-scheme:light;
+  --page:#f7f5f0;--surface:#fffefb;--soft:#efede5;--soft-2:#e7e4da;
+  --ink:#111722;--muted:#5d6472;--line:#e4e0d5;--line-strong:#d5d0c2;
+  --pine:#0f3566;--pine-deep:#0a2749;--pine-soft:#e4ebf5;--pine-ink:#0f3566;
+  --gold:#8a6428;--gold-soft:#f2e9d6;
+  --on-pine:#fff;
+  --h1:#0a2749;--h2:#124a86;
+  --surface-a:rgba(255,254,251,.88);--nav-a:rgba(255,254,251,.92);--ink-a:rgba(17,23,34,.95);--pine-ring:rgba(15,53,102,.17);
+  --shadow-sm:0 1px 2px rgba(17,23,34,.05);
+  --shadow-md:0 2px 4px rgba(17,23,34,.04),0 12px 28px -16px rgba(17,23,34,.22);
+  --shadow-lg:0 18px 44px -22px rgba(17,23,34,.34);
+  --radius:18px;--radius-sm:13px;
+  --fd:"Fraunces",Georgia,serif;--fb:"Literata",Georgia,serif;--fr:"Literata",Georgia,serif;
+  box-sizing:border-box;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --page:#0b1017;--surface:#131a24;--soft:#1a2230;--soft-2:#202a3a;
+  --ink:#edf0f4;--muted:#9aa4b3;--line:#222c3a;--line-strong:#2d3a4c;
+  --pine:#a8c6ef;--pine-deep:#8fb4e8;--pine-soft:#1c2a3d;--pine-ink:#bcd6f5;
+  --gold:#d9b878;--gold-soft:#2c2519;
+  --on-pine:#0b1017;
+  --h1:#0d2544;--h2:#17416f;
+  --surface-a:rgba(19,26,36,.9);--nav-a:rgba(19,26,36,.93);--ink-a:rgba(237,240,244,.97);--pine-ring:rgba(168,198,239,.24);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  --shadow-md:0 2px 4px rgba(0,0,0,.24),0 14px 32px -18px rgba(0,0,0,.7);
+  --shadow-lg:0 20px 48px -24px rgba(0,0,0,.8);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --page:#0b1017;--surface:#131a24;--soft:#1a2230;--soft-2:#202a3a;
+  --ink:#edf0f4;--muted:#9aa4b3;--line:#222c3a;--line-strong:#2d3a4c;
+  --pine:#a8c6ef;--pine-deep:#8fb4e8;--pine-soft:#1c2a3d;--pine-ink:#bcd6f5;
+  --gold:#d9b878;--gold-soft:#2c2519;
+  --on-pine:#0b1017;
+  --h1:#0d2544;--h2:#17416f;
+  --surface-a:rgba(19,26,36,.9);--nav-a:rgba(19,26,36,.93);--ink-a:rgba(237,240,244,.97);--pine-ring:rgba(168,198,239,.24);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  --shadow-md:0 2px 4px rgba(0,0,0,.24),0 14px 32px -18px rgba(0,0,0,.7);
+  --shadow-lg:0 20px 48px -24px rgba(0,0,0,.8);
+}
+
+html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));background:var(--page)}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--page);color:var(--ink);
+  font:400 16px/1.55 var(--fb),Georgia,serif;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:10}
+[hidden]{display:none!important}
+button,input,textarea{font:inherit;color:inherit}
+img{max-width:100%}
+a{color:var(--pine-ink)}
+
+.app{max-width:520px;min-height:100dvh;margin:0 auto;padding-bottom:110px}
+
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:5;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 18px;background:var(--surface-a);
+  -webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand>div{min-width:0}
+.brand strong,.brand small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand strong{font:600 15px/1.25 var(--fd);letter-spacing:-.1px;color:var(--ink)}
+.brand small{color:var(--muted);font:400 12.5px/1.3 var(--fb);letter-spacing:.2px;margin-top:1px}
+.mark{width:38px;height:38px;border-radius:11px;display:block;flex:none;background:var(--soft);object-fit:cover}
+
+.ib{
+  display:grid;place-items:center;width:44px;height:44px;flex:none;
+  border:1px solid var(--line);border-radius:50%;background:var(--surface);
+  color:var(--pine-ink);cursor:pointer;box-shadow:var(--shadow-sm);
+  transition:background .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+.ib:hover{background:var(--soft)}
+.ib:active{transform:scale(.96)}
+
+svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+main{padding:20px 18px 8px}
+
+h1{margin:0;font:600 30px/1.12 var(--fd);letter-spacing:-.7px;color:var(--ink)}
+h2{margin:30px 0 12px;font:600 20px/1.25 var(--fd);letter-spacing:-.3px;color:var(--ink)}
+.eyebrow{color:var(--gold);font:600 11.5px/1.4 var(--fb);letter-spacing:2.1px;text-transform:uppercase}
+.lead{margin:10px 0 20px;color:var(--muted);font:italic 400 17px/1.5 var(--fb);text-wrap:pretty}
+
+.hero{
+  position:relative;overflow:hidden;padding:22px 20px;
+  border-radius:22px;color:#fff;box-shadow:var(--shadow-lg);
+  background:radial-gradient(120% 140% at 100% 0%,rgba(255,255,255,.16),transparent 55%),
+             radial-gradient(90% 120% at 0% 100%,rgba(214,178,120,.24),transparent 60%),
+             linear-gradient(140deg,var(--h1),var(--h2));
+}
+.hero::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);pointer-events:none}
+.hero h2{margin:0 0 14px;color:#fff;font:600 21px/1.2 var(--fd);letter-spacing:-.2px}
+.hero .row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border:0;border-bottom:1px solid rgba(255,255,255,.16);font:400 15px/1.4 var(--fb)}
+.hero .row:last-child{border-bottom:0}
+.hero .row span:first-child{color:rgba(255,255,255,.88);flex:none}
+.hero .row span:last-child{flex:1;min-width:0}
+.hero .row span:last-child{color:#fff;font-weight:600;text-align:right;opacity:1;font-variant-numeric:tabular-nums}
+
+.card{
+  padding:16px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);box-shadow:var(--shadow-md);
+}
+.card .row{padding:10px 0}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.act{
+  display:flex;flex-direction:column;align-items:flex-start;gap:12px;
+  padding:16px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);color:var(--ink);text-decoration:none;
+  font:600 15px/1.3 var(--fb);letter-spacing:-.1px;cursor:pointer;text-align:left;
+  box-shadow:var(--shadow-sm);transition:transform .16s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.act:hover{border-color:var(--line-strong);box-shadow:var(--shadow-md)}
+.act:active{transform:translateY(1px) scale(.995)}
+.act>svg{width:40px;height:40px;padding:9px;border-radius:12px;background:var(--pine-soft);color:var(--pine-ink);stroke-width:1.6}
+.act[style*="margin-top"],main .card + .act{margin-top:10px}
+
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row span:last-child{opacity:.92;text-align:right;font-variant-numeric:tabular-nums}
+.row small{color:var(--muted);font:400 13px/1.4 var(--fb);letter-spacing:0}
+
+.search{
+  display:flex;align-items:center;gap:10px;height:52px;padding:0 16px;margin:0 0 14px;
+  border:1px solid var(--line);border-radius:16px;background:var(--surface);
+  box-shadow:var(--shadow-sm);transition:border-color .18s ease,box-shadow .18s ease;
+}
+.search:focus-within{border-color:var(--pine);box-shadow:0 0 0 3px var(--pine-ring)}
+.search svg{color:var(--muted);flex:none;width:20px;height:20px}
+.search input{flex:1;min-width:0;border:0;outline:0;background:none;font:400 16px var(--fb)}
+.search input::placeholder{color:var(--muted);opacity:.85}
+
+.chips{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:8px 15px;
+  border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  color:var(--ink);cursor:pointer;font:600 13.5px/1 var(--fb);letter-spacing:.1px;
+  text-decoration:none;transition:background .16s ease,border-color .16s ease,color .16s ease,transform .16s ease;
+}
+.chip:hover{background:var(--soft)}
+.chip:active{transform:scale(.98)}
+.chip[aria-pressed="true"],.chip[aria-expanded="true"]{background:var(--pine);border-color:var(--pine);color:var(--on-pine)}
+.chip svg{width:18px;height:18px}
+
+#bvs{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--soft);box-shadow:inset 0 1px 2px rgba(17,23,34,.04)}
+#bvs .chip{border:0;background:none;box-shadow:none;font-size:13px;padding:8px 18px;letter-spacing:.4px}
+#bvs .chip[aria-pressed="true"]{background:var(--surface);color:var(--pine-ink);box-shadow:var(--shadow-sm)}
+
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 16px}
+.tools .chip{min-height:40px}
+
+details{
+  margin-bottom:10px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:var(--surface);box-shadow:var(--shadow-sm);overflow:hidden;
+}
+summary{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  min-height:54px;padding:12px 16px;cursor:pointer;list-style:none;
+  font:600 16px/1.3 var(--fr);letter-spacing:-.1px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";width:8px;height:8px;flex:none;border-right:1.8px solid var(--muted);border-bottom:1.8px solid var(--muted);transform:rotate(45deg) translateY(-2px);transition:transform .2s ease}
+details[open] summary::after{transform:rotate(225deg) translateY(-1px)}
+summary small{color:var(--muted);font:400 12.5px var(--fb);margin-left:auto;margin-right:6px}
+
+.ch{display:grid;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:8px;padding:2px 14px 16px}
+.ch a{
+  display:grid;place-items:center;height:44px;border-radius:12px;
+  background:var(--soft);color:var(--pine-ink);font:600 14px/1 var(--fb);
+  text-decoration:none;font-variant-numeric:tabular-nums;transition:background .15s ease,color .15s ease;
+}
+.ch a:hover{background:var(--pine);color:var(--on-pine)}
+
+ul{margin:0;padding:0;list-style:none}
+.song{display:flex;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px solid var(--line);list-style:none}
+.song:last-child{border-bottom:0}
+.song a{flex:1;display:flex;align-items:center;gap:12px;min-width:0;color:inherit;text-decoration:none}
+.song div{flex:1;min-width:0}
+.song strong{display:block;font:600 15.5px/1.35 var(--fr);letter-spacing:-.1px}
+.song small{display:block;color:var(--muted);font:400 13px/1.4 var(--fb);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.num{width:auto!important;min-width:38px;color:var(--gold);font:600 13px/1 var(--fb);letter-spacing:.6px;font-variant-numeric:tabular-nums}
+.star{
+  width:44px;height:44px;display:grid;place-items:center;flex:none;
+  border:0;border-radius:50%;background:none;color:var(--muted);cursor:pointer;
+  transition:background .16s ease,color .16s ease,transform .16s ease;
+}
+.star:hover{background:var(--soft)}
+.star:active{transform:scale(.92)}
+.star[aria-pressed="true"]{color:var(--gold)}
+.star[aria-pressed="true"] svg{fill:currentColor}
+
+.empty,.note{color:var(--muted);font:400 14px/1.55 var(--fb);padding:12px 2px}
+.tag{padding:3px 10px;border-radius:999px;background:var(--pine-soft);color:var(--pine-ink);font:600 11.5px/1.6 var(--fb);letter-spacing:.4px;text-transform:uppercase}
+
+a.row{color:inherit;text-decoration:none;padding:14px 2px;align-items:center}
+a.row:hover span:first-child{color:var(--pine-ink)}
+a.row span:first-child{display:block;font:600 15.5px/1.35 var(--fr);transition:color .16s ease}
+a.row span:last-child{opacity:1;color:var(--muted);font-size:20px;line-height:1}
+
+nav{
+  position:fixed;z-index:6;bottom:calc(10px + env(safe-area-inset-bottom,0px));left:50%;
+  width:min(calc(100% - 24px),480px);transform:translateX(-50%);
+  display:flex;gap:2px;padding:7px;border:1px solid var(--line);border-radius:22px;
+  background:var(--nav-a);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);
+  box-shadow:var(--shadow-lg);
+}
+nav a{
+  flex:1;display:grid;justify-items:center;gap:3px;padding:7px 2px 5px;border-radius:15px;
+  color:var(--muted);font:600 10.5px/1 var(--fb);letter-spacing:.2px;text-decoration:none;
+  transition:color .16s ease,background .16s ease;
+}
+nav a svg{width:21px;height:21px;stroke-width:1.7}
+nav a[aria-current]{color:var(--pine-ink);font-weight:700;background:var(--pine-soft)}
+
+#toast{
+  position:fixed;z-index:11;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));
+  max-width:88%;padding:12px 18px;transform:translate(-50%,12px);
+  border-radius:999px;background:var(--ink-a);color:var(--page);
+  font:400 14px/1.4 var(--fb);text-align:center;opacity:0;pointer-events:none;
+  box-shadow:var(--shadow-lg);transition:opacity .22s ease,transform .22s ease;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+#upd{
+  position:fixed;z-index:12;left:14px;right:14px;bottom:calc(92px + env(safe-area-inset-bottom,0px));
+  display:flex;gap:12px;align-items:center;justify-content:space-between;
+  padding:12px 14px 12px 18px;border-radius:18px;
+  background:var(--pine-deep);color:#fff;font:400 14.5px/1.4 var(--fb);
+  box-shadow:var(--shadow-lg);
+}
+#upd button{
+  min-height:40px;padding:0 16px;border:0;border-radius:999px;
+  background:#e6c27a;color:#0a2749;font:600 14px var(--fb);cursor:pointer;flex:none;
+}
+
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;border-radius:8px;
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.res{display:block;padding:13px 2px;border-bottom:1px solid var(--line);color:inherit;text-decoration:none}
+.res:hover b{color:var(--pine-ink)}
+.res b{display:block;font:600 14.5px/1.4 var(--fr);letter-spacing:.1px}
+.res span{display:block;color:var(--muted);font:400 13.5px/1.5 var(--fb);margin-top:3px}
+
+#bcont{margin-bottom:14px}
+#bcont a.act{flex-direction:row;align-items:center;font-size:14px}
+.rt{margin:0 0 14px!important;font:600 26px/1.18 var(--fd)!important;letter-spacing:-.5px}
+.q{font:600 calc(var(--fs,18)*1px)/1.5 var(--fr);margin:0 0 16px;letter-spacing:-.2px}
+.vs p{
+  margin:0 0 .55em;padding:4px 10px;border-radius:10px;
+  font:400 calc(var(--fs,18)*1px)/1.72 var(--fr);
+  border-left:2px solid transparent;transition:background .15s ease,border-color .15s ease;
+}
+.vs p:hover{background:var(--soft)}
+.vs sup{margin-right:7px;color:var(--gold);font:600 .58em/1 var(--fb);letter-spacing:.3px;vertical-align:top;position:relative;top:.2em}
+.vs p.sel{background:var(--pine-soft);border-left-color:var(--pine)}
+.vs p.hl{outline:0;border-left-color:var(--gold);background:var(--gold-soft)}
+.vs p[data-v]{cursor:pointer}
+.lyr{white-space:pre-line;font:400 calc(var(--fs,18)*1px)/1.85 var(--fr)}
+.vdt{font:400 calc(var(--fs,18)*1px)/1.65 var(--fr);margin:10px 0;letter-spacing:-.1px}
+.vdr{color:var(--muted);font:600 13px/1.4 var(--fb);letter-spacing:.4px;text-transform:uppercase;margin:0 0 14px}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+
+.av{border-top:1px solid var(--line);padding:14px 0}
+.av:first-of-type{border-top:0;padding-top:2px}
+.av b{display:block;font:600 16px/1.35 var(--fr);letter-spacing:-.1px}
+.av small{color:var(--gold);font:600 12.5px/1.5 var(--fb);letter-spacing:.5px;text-transform:uppercase}
+.avimg{display:block;width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin:12px 0 4px;background:var(--soft)}
+
+.f{display:flex;flex-direction:column;gap:7px;margin:14px 0}
+.f label{font:600 12.5px/1.4 var(--fb);color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+.in{
+  width:100%;box-sizing:border-box;min-height:50px;padding:13px 14px;
+  border:1px solid var(--line);border-radius:13px;background:var(--page);color:inherit;
+  font:400 16px var(--fb);transition:border-color .18s ease,box-shadow .18s ease;
+}
+.in:focus{outline:0;border-color:var(--pine);box-shadow:0 0 0 3px var(--pine-ring)}
+textarea.in{min-height:96px;resize:vertical;line-height:1.5}
+
+.kwrow{margin:12px 0}
+.kw{display:inline-flex;align-items:center;gap:8px}
+.kw[aria-expanded=true]{background:var(--pine);border-color:var(--pine);color:var(--on-pine)}
+#tm{margin:0 0 14px}
+.tg{display:flex;flex-wrap:wrap;gap:8px;padding:4px}
+.tg .chip[aria-pressed=true]{background:var(--pine);color:var(--on-pine);border-color:var(--pine)}
+
+#ver:empty,#off:empty,#am:empty{display:none}
+
+input[type=file]{font:400 13.5px/1.4 var(--fb);color:var(--muted);padding:6px 0}
+input[type=file]::file-selector-button{margin-right:10px;padding:9px 15px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font:600 13px var(--fb);cursor:pointer}
+input[type=file]::file-selector-button:hover{background:var(--soft)}
+
+#adm .card{margin-bottom:6px}
+#adm h2{margin-top:26px}
+#adm .note a{color:var(--pine-ink)}
+details.card{padding:0}
+details.card>summary{padding:14px 16px}
+details.card>ol,details.card>p{padding:0 16px}
 </style>
+<script>try{var t=localStorage.getItem("pipq-theme");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
 <div class="app">
@@ -121,10 +339,10 @@ summary{font-family:var(--fr);font-size:16px;font-weight:600}
 <noscript><p style="padding:24px">Ative o JavaScript para usar o app.</p></noscript>
 <main>
 <section id="inicio">
-  <div class="eyebrow">Palavra para o caminho</div>
-  <h1>Bem-vindo à PIPQ</h1>
-  <p class="lead">Leia, cante e cresça na graça de Deus conosco.</p>
-  <div class="hero"><h2>Nossos cultos</h2><div class="hor"></div></div>
+  <div class="eyebrow">Um sonho de igreja</div>
+  <h1>Que bom ter você aqui</h1>
+  <p class="lead">Bíblia, hinário e a vida da nossa igreja, sempre à mão.</p>
+  <div class="hero"><h2>Nossos encontros</h2><div class="hor"></div></div>
   <div class="grid">
     <a class="act" href="#biblia"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 012 2v12a2 2 0 00-2-2H4zM20 5h-6a2 2 0 00-2 2v12a2 2 0 012-2h6z"/></svg>Bíblia</a>
     <a class="act" href="#hinario"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zm11-2a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Hinário</a>
@@ -137,6 +355,7 @@ summary{font-family:var(--fr);font-size:16px;font-weight:600}
 <section id="biblia" hidden>
   <div class="eyebrow" id="bver"></div>
   <h1>Bíblia</h1>
+  <p class="lead">Texto completo, também sem internet.</p>
   <div class="chips" id="bvs" style="margin-top:10px"><button class="chip" data-v="ara">ARA</button><button class="chip" data-v="naa">NAA</button></div>
   <div id="bhome"><div id="bcont"></div><label class="search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="bq" type="search" placeholder="Livro, referência ou palavra" aria-label="Buscar na Bíblia"></label><div class="kwrow"><button class="chip kw" id="kwb" aria-expanded="false" aria-controls="tm"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>Palavras-chave</button></div><div class="card" id="tm" hidden></div><div id="br"></div><div id="bl"></div></div>
   <div id="bc" hidden></div>
@@ -146,7 +365,7 @@ summary{font-family:var(--fr);font-size:16px;font-weight:600}
   <div id="hhome">
   <div class="eyebrow">Novo Cântico</div>
   <h1>Hinário</h1>
-  <p class="lead">Hinos para a devoção pessoal e o culto.</p>
+  <p class="lead">Para cantar em casa e na igreja.</p>
   <label class="search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="hq" type="search" placeholder="Número, título ou trecho da letra" aria-label="Buscar hino"></label>
   <div class="chips"><button class="chip" id="fav" aria-pressed="false">Somente favoritos</button></div>
   <ul id="hl"><li class="empty">Carregando…</li></ul>
@@ -158,25 +377,25 @@ summary{font-family:var(--fr);font-size:16px;font-weight:600}
   <div id="ehome">
   <div class="eyebrow">Confissões e catecismos</div>
   <h1>Estudo</h1>
-  <p class="lead">Conheça a herança da fé reformada.</p>
+  <p class="lead">Confissões e catecismos que atravessam gerações.</p>
   <h2>Símbolos de Fé</h2>
   <div class="card" id="elist"></div></div>
   <div id="ed" hidden></div>
 </section>
 
 <section id="igreja" hidden>
-  <div class="eyebrow">Primeira Igreja Presbiteriana em Queimados</div>
+  <div class="eyebrow">Nossa casa em Queimados</div>
   <h1>Igreja</h1>
-  <p class="lead">Horários, contato e contribuições.</p>
+  <p class="lead">Quando nos reunimos, onde estamos e como falar com a gente.</p>
   <h2>Horários</h2><div class="card hor"></div>
   <h2>Endereço</h2><div class="card"><p id="end" style="margin:0 0 10px"></p><a class="act" id="map" target="_blank" rel="noopener">Abrir no mapa</a></div>
-  <h2>Contato</h2><a class="act" id="wa2" target="_blank" rel="noopener">Falar pelo WhatsApp</a><a class="act" id="tel" style="margin-top:8px"></a><a class="act yt" target="_blank" rel="noopener" style="margin-top:8px"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg>Canal no YouTube</a>
-  <h2>Aplicativo</h2><div class="card"><p class="note" id="ver" style="margin:0 0 6px"></p><p class="note" id="off" style="margin:0 0 10px">Para usar sem internet, abra o site uma vez conectado. No iPhone: Compartilhar › Adicionar à Tela de Início.</p><button class="act" id="inst" hidden>Instalar no celular</button></div>
-  <h2>Dízimos e ofertas</h2><div class="card"><p style="margin:0 0 4px" class="note">Chave PIX</p><strong id="pixk"></strong><div style="margin-top:12px"><button class="act" id="pix">Copiar chave PIX</button></div></div>
+  <h2>Fale com a gente</h2><a class="act" id="wa2" target="_blank" rel="noopener">Falar pelo WhatsApp</a><a class="act" id="tel" style="margin-top:8px"></a><a class="act yt" target="_blank" rel="noopener" style="margin-top:8px"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg>Canal no YouTube</a>
+  <h2>No seu celular</h2><div class="card"><p class="note" id="ver" style="margin:0 0 6px"></p><p class="note" id="off" style="margin:0 0 10px">Para usar sem internet, abra o site uma vez conectado. No iPhone: Compartilhar › Adicionar à Tela de Início.</p><button class="act" id="inst" hidden>Instalar no celular</button></div>
+  <h2>Dízimos e ofertas</h2><div class="card"><p style="margin:0 0 12px">Ofertar é um gesto de gratidão, não uma obrigação. Quem participa ajuda a manter a casa aberta, os encontros acontecendo e o cuidado com quem chega. Se quiser contribuir por aqui, fique à vontade — cada gesto, do tamanho que for, é recebido com carinho.</p><p style="margin:0 0 4px" class="note">Chave PIX</p><strong id="pixk"></strong><div style="margin-top:12px"><button class="act" id="pix">Copiar chave PIX</button></div></div>
   <p class="note" style="margin-top:28px"><a href="#admin">Área administrativa</a></p>
 </section>
 <section id="admin" hidden>
-  <div class="eyebrow">Somente para quem cuida do app</div>
+  <div class="eyebrow">Uso de quem cuida do app</div>
   <h1>Administração</h1>
   <div id="adm"></div>
 </section>
@@ -213,12 +432,12 @@ $("#theme").onclick=()=>{const t=dark()?"light":"dark";root.dataset.theme=t;stor
 // Dados da igreja
 $$(".hor").forEach(el=>el.innerHTML=C.horarios.map(h=>`<div class="row"><span>${h[0]}</span><span>${h[1]}</span></div>`).join(""));
 const wa="https://wa.me/"+C.whatsapp;$("#wa1").href=wa;$("#wa2").href=wa;
-$("#end").textContent=C.endereco;const okp=!/^INSERIR/.test(C.pix);$("#pixk").textContent=okp?C.pix:"Chave ainda não cadastrada";$("#pix").hidden=!okp;
+$("#end").textContent=C.endereco;const okp=!/^INSERIR/.test(C.pix);$("#pixk").textContent=okp?C.pix:"Ainda não cadastrada. Fale com a gente pelo WhatsApp que enviamos.";$("#pix").hidden=!okp;
 $("#map").href=C.maps;$$(".yt").forEach(a=>a.href=C.youtube);$("#tel").href="tel:+"+C.whatsapp;$("#tel").textContent="Ligar: "+C.tel;
 $("#pix").onclick=async()=>{try{await navigator.clipboard.writeText(C.pix);toast("Chave PIX copiada.")}catch(e){toast("Copie manualmente: "+C.pix)}};
 
 // Dados (JSON em /data) e utilidades
-const D={},enc=encodeURIComponent,esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const D={},enc=encodeURIComponent,esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const load=f=>D[f]||(D[f]=new Promise((ok,no)=>{const e=document.createElement("script");e.src="data/"+f+".js";e.onload=()=>window.__D&&window.__D[f]?ok(window.__D[f]):no();e.onerror=no;document.head.append(e)}).catch(e=>{delete D[f];throw e}));
 const fail=el=>el.innerHTML='<p class="empty">Não foi possível carregar os dados. Confira se a pasta data está junto do index.html ou conecte-se à internet.</p>';
 const share=async t=>{try{await navigator.share({text:t})}catch(e){}};const copy=async t=>{try{await navigator.clipboard.writeText(t);toast("Copiado.")}catch(e){toast("Não foi possível copiar.")}};
@@ -318,57 +537,51 @@ document.addEventListener("visibilitychange",()=>{if(!document.hidden&&wlOn&&!wl
 document.addEventListener("click",async e=>{const b=e.target.closest("[data-wl]");if(!b)return;const want=b.getAttribute("aria-pressed")!=="true",ok=await wake(want);b.setAttribute("aria-pressed",ok?want:!want);toast(!ok?"Não foi possível manter a tela acesa.":want?"A tela ficará acesa.":"Tela acesa desativada.")});
 
 // Início: avisos da igreja e versículo do dia
-function avisos(){const hoje=new Date().toISOString().slice(0,10),L=(window.AVISOS||[]).filter(a=>a&&a.titulo&&(!a.ate||a.ate>=hoje));if(!L.length)return;
-  $("#inicio .hero").insertAdjacentHTML("afterend",`<h2>Avisos</h2><div class="card">${L.map(a=>`<div class="av"><b>${esc(a.titulo)}</b>${a.quando?`<small>${esc(a.quando)}</small>`:""}${a.texto?`<p class="note" style="margin:4px 0 0">${esc(a.texto)}</p>`:""}${a.imagem?`<img class="avimg" src="${esc(a.imagem)}" alt="${esc(a.titulo)}" loading="lazy">`:""}</div>`).join("")}</div>`)}
+function avisos(){const hoje=new Date().toLocaleDateString("sv-SE"),L=(window.AVISOS||[]).filter(a=>a&&a.titulo&&(!a.ate||a.ate>=hoje));if(!L.length)return;
+  $("#inicio .hero").insertAdjacentHTML("afterend",`<h2>Recados da nossa igreja</h2><div class="card">${L.map(a=>`<div class="av"><b>${esc(a.titulo)}</b>${a.quando?`<small>${esc(a.quando)}</small>`:""}${a.texto?`<p class="note" style="margin:4px 0 0">${esc(a.texto)}</p>`:""}${a.imagem?`<img class="avimg" src="${esc(a.imagem)}" alt="${esc(a.titulo)}" loading="lazy">`:""}</div>`).join("")}</div>`)}
 async function vdia(){try{const V=await load("versiculos"),d=new Date(),n=Math.floor((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())-Date.UTC(d.getFullYear(),0,0))/864e5),x=V[(n+d.getFullYear())%V.length];
   $("#inicio").insertAdjacentHTML("beforeend",`<h2>Versículo do dia</h2><div class="card"><p class="vdt">“${esc(x.t)}”</p><p class="vdr">${x.r} (ARA)</p><div class="tools" style="margin:0"><a class="chip" href="#biblia/${x.i}/${x.c}/${x.v}">Ler no capítulo</a><button class="chip" id="vc">Copiar</button>${navigator.share?'<button class="chip" id="vs2">Compartilhar</button>':""}</div></div>`);
   const tx=`“${x.t}”\n${x.r} (ARA)`;$("#vc").onclick=()=>copy(tx);if($("#vs2"))$("#vs2").onclick=()=>share(tx)}catch(e){}}
 avisos();vdia();
 
-// Administração dos avisos: publica avisos.js e as imagens direto no GitHub (a "chave" é o token da conta)
-const AK="pipq-adm";let AD={list:[],orig:[],sha:null,edit:-1,cfg:null,f:{imagem:null,_d:null}};
-const b64u=s=>btoa(unescape(encodeURIComponent(s))),u64=s=>decodeURIComponent(escape(atob(s.replace(/\s/g,""))));
-const gh=(c,p,m,b)=>fetch(`https://api.github.com/repos/${c.repo}/contents/${c.dir?c.dir+"/":""}${p}${m?"":"?ref="+encodeURIComponent(c.branch)}`,{method:m||"GET",headers:Object.assign({Authorization:"Bearer "+c.token,Accept:"application/vnd.github+json"},b?{"Content-Type":"application/json"}:{}),body:b?JSON.stringify(b):undefined});
-const erro=s=>s===401?"A chave é inválida ou venceu. Gere outra no GitHub.":s===403||s===404?"Sem permissão ou repositório não encontrado. Confira o nome e as permissões da chave.":s===409||s===422?"Os avisos mudaram em outro aparelho. Toque em Recarregar e refaça a alteração.":"Não foi possível falar com o GitHub (erro "+s+").";
-const cfgGet=()=>{try{return JSON.parse(localStorage.getItem(AK)||sessionStorage.getItem(AK)||"null")}catch(e){return null}};
-const parseAv=t=>{const m=t.match(/window\.AVISOS\s*=\s*(\[[\s\S]*\])\s*;?/);if(!m)return null;try{return JSON.parse(m[1])}catch(e){try{return Function('"use strict";return '+m[1])()}catch(x){return null}}};
+// Administração dos avisos: monta os avisos no aparelho e gera o avisos.js para publicar no GitHub.
+// Nenhuma chave de acesso é guardada no navegador: quem publica é você, pelo próprio GitHub.
+const AD={list:[],edit:-1,f:{imagem:null,_d:null},repo:null};
+const DRAFT="pipq-avisos-rascunho",REPO="pipq-repo";
+const clone=a=>JSON.parse(JSON.stringify(a||[]));
+const repoGet=()=>{try{return JSON.parse(store.get(REPO)||"null")}catch(e){return null}};
+const adClean=a=>{const o={titulo:a.titulo};["quando","texto","ate","imagem"].forEach(k=>{if(a[k])o[k]=a[k]});return o};
+const avisosTxt=()=>"// Gerado pelo painel do app. Também pode ser editado à mão.\nwindow.AVISOS = "+JSON.stringify(AD.list.map(adClean),null,2)+";\n";
+const saveDraft=()=>store.set(DRAFT,JSON.stringify(AD.list.map(adClean)));
+const ghUrl=(p,kind)=>AD.repo?"https://github.com/"+AD.repo.repo+"/"+kind+"/"+encodeURIComponent(AD.repo.branch||"main")+"/"+(AD.repo.dir?AD.repo.dir+"/":"")+p:"";
 const dl=(n,d)=>{const a=document.createElement("a");a.href=d;a.download=n;a.click()};
 async function shrink(file,max=1200){let bm;try{bm=await createImageBitmap(file)}catch(e){bm=await new Promise((ok,no)=>{const i=new Image;i.onload=()=>ok(i);i.onerror=no;i.src=URL.createObjectURL(file)})}
   const w=bm.width||bm.naturalWidth,h=bm.height||bm.naturalHeight,k=Math.min(1,max/Math.max(w,h)),c=document.createElement("canvas");c.width=Math.round(w*k);c.height=Math.round(h*k);const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(bm,0,0,c.width,c.height);return c.toDataURL("image/jpeg",.82)}
 const msg=(t,ok)=>{const e=$("#am");if(e){e.textContent=t;e.style.color=ok?"var(--pine)":"#b3261e"}};
-async function admLoad(){const c=AD.cfg,r=await gh(c,"avisos.js");if(r.status===404){AD.sha=null;AD.list=[];AD.orig=[];return}
-  if(!r.ok)throw r.status;const j=await r.json();AD.sha=j.sha;const l=parseAv(u64(j.content))||(window.AVISOS||[]);AD.list=l.map(a=>Object.assign({},a));AD.orig=JSON.parse(JSON.stringify(l))}
-const adClean=a=>{const o={titulo:a.titulo};["quando","texto","ate","imagem"].forEach(k=>{if(a[k])o[k]=a[k]});return o};
-function adView(){const el=$("#adm"),c=cfgGet();
-  if(!AD.cfg){el.innerHTML=`<p class="lead">Entre para publicar avisos e imagens para todos os celulares.</p><div class="card"><div class="f"><label for="ar">Repositório (usuário/nome)</label><input class="in" id="ar" placeholder="igreja-pipq/app" value="${esc(c?c.repo:"")}" autocapitalize="off"></div><div class="f"><label for="ab">Ramo (branch)</label><input class="in" id="ab" value="${esc(c?c.branch:"main")}" autocapitalize="off"></div><div class="f"><label for="ad">Pasta do app no repositório (deixe vazio se for a raiz)</label><input class="in" id="ad" value="${esc(c?c.dir||"":"")}" autocapitalize="off"></div><div class="f"><label for="at">Chave de acesso (token do GitHub)</label><input class="in" id="at" type="password" autocomplete="off" placeholder="github_pat_…"></div><label class="note" style="display:block;margin:6px 0 12px"><input type="checkbox" id="al" checked> Lembrar neste aparelho (use só em aparelho seu)</label><button class="act" id="ain">Entrar como administrador</button><p id="am" class="note" role="status"></p></div>
-    <details class="card" style="margin-top:12px"><summary>Como obter a chave de acesso</summary><ol class="note"><li>Entre em github.com com a conta que guarda o app.</li><li>Abra Settings › Developer settings › Personal access tokens › Fine-grained tokens › Generate new token.</li><li>Em “Repository access”, escolha “Only select repositories” e marque o repositório do app.</li><li>Em “Permissions › Repository permissions”, deixe “Contents” em “Read and write”.</li><li>Escolha um prazo, gere e copie o código (começa com github_pat_). Cole acima.</li></ol><p class="note">A chave vale só para esse repositório. Quem não tem a chave não consegue alterar nada.</p></details>`;
-    $("#ain").onclick=async()=>{const n={repo:$("#ar").value.trim(),branch:$("#ab").value.trim()||"main",dir:$("#ad").value.trim().replace(/^\/|\/$/g,""),token:$("#at").value.trim()};
-      if(!/^[^\s/]+\/[^\s/]+$/.test(n.repo)||!n.token){msg("Preencha o repositório (usuário/nome) e a chave.");return}
-      msg("Conferindo…",1);AD.cfg=n;try{const t=await fetch("https://api.github.com/repos/"+n.repo,{headers:{Authorization:"Bearer "+n.token,Accept:"application/vnd.github+json"}});if(!t.ok)throw t.status;const j=await t.json();if(j.permissions&&!j.permissions.push)throw 403;await admLoad();(($("#al")||{}).checked===false?sessionStorage:localStorage).setItem(AK,JSON.stringify(n));adView()}catch(e){AD.cfg=null;msg(erro(e))}};return}
-  const L=AD.list,ed=AD.edit>=0?L[AD.edit]:null;
-  el.innerHTML=`<p class="note">Conectado a <b>${esc(AD.cfg.repo)}</b> · <button class="chip" data-a="sair">Sair</button></p>
-  <h2>Avisos atuais</h2><div class="card">${L.length?L.map((a,i)=>`<div class="av"><b>${esc(a.titulo)}</b>${a.quando?`<small>${esc(a.quando)}</small>`:""}${a.ate?`<small> · até ${esc(a.ate)}</small>`:""}${a.imagem?`<img class="avimg" style="max-height:120px;width:auto" alt="" src="${esc(a._d||a.imagem)}">`:""}<div class="tools" style="margin:8px 0 0"><button class="chip" data-a="up" data-i="${i}" aria-label="Subir">↑</button><button class="chip" data-a="dn" data-i="${i}" aria-label="Descer">↓</button><button class="chip" data-a="ed" data-i="${i}">Editar</button><button class="chip" data-a="rm" data-i="${i}">Excluir</button></div></div>`).join(""):'<p class="note">Nenhum aviso. Adicione o primeiro abaixo.</p>'}</div>
-  <h2>${ed?"Editar aviso":"Novo aviso"}</h2><div class="card"><div class="f"><label for="ft">Título</label><input class="in" id="ft" maxlength="80" value="${esc(ed?ed.titulo:"")}"></div><div class="f"><label for="fq">Quando (opcional)</label><input class="in" id="fq" maxlength="60" placeholder="Domingo, 22/11" value="${esc(ed&&ed.quando||"")}"></div><div class="f"><label for="fx">Detalhes (opcional)</label><textarea class="in" id="fx" rows="3" maxlength="400">${esc(ed&&ed.texto||"")}</textarea></div><div class="f"><label for="fa">Mostrar até (opcional)</label><input class="in" id="fa" type="date" value="${esc(ed&&ed.ate||"")}"></div><div class="f"><label for="fi">Imagem (opcional)</label><input id="fi" type="file" accept="image/*"><img id="pv" class="avimg" style="max-height:160px;width:auto" alt="" ${AD.f.imagem?`src="${esc(AD.f._d||AD.f.imagem)}"`:"hidden"}><button class="chip" data-a="rmimg" ${AD.f.imagem?"":"hidden"}>Remover imagem</button></div><div class="tools"><button class="act" data-a="save">${ed?"Salvar alterações do aviso":"Adicionar aviso"}</button>${ed?'<button class="chip" data-a="cancel">Cancelar</button>':""}</div></div>
-  <div class="tools" style="margin-top:16px"><button class="act" data-a="pub">Publicar alterações</button><button class="chip" data-a="reload">Recarregar</button></div><p id="am" class="note" role="status"></p><p class="note"><a href="#" data-a="manual">Não usa GitHub? Baixar os arquivos para enviar à mão</a></p>`;
-  $("#fi").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=await shrink(f);AD.f={imagem:"avisos/aviso-"+Date.now()+".jpg",_d:d};const p=$("#pv");p.src=d;p.hidden=false;$('[data-a="rmimg"]').hidden=false}catch(x){msg("Não consegui ler essa imagem.")}}}
-async function admPub(){const c=AD.cfg,btn=$('[data-a="pub"]');btn.disabled=true;try{
-  for(const a of AD.list)if(a._d){msg("Enviando imagem…",1);const r=await gh(c,a.imagem,"PUT",{message:"Imagem de aviso",content:a._d.split(",")[1],branch:c.branch});if(!r.ok)throw r.status}
-  msg("Publicando avisos…",1);const txt="// Gerado pelo painel de administração do app. Também pode ser editado à mão.\nwindow.AVISOS = "+JSON.stringify(AD.list.map(adClean),null,2)+";\n";
-  const r=await gh(c,"avisos.js","PUT",Object.assign({message:"Atualiza avisos",content:b64u(txt),branch:c.branch},AD.sha?{sha:AD.sha}:{}));if(!r.ok)throw r.status;AD.sha=(await r.json()).content.sha;
-  const keep=new Set(AD.list.map(a=>a.imagem));for(const o of AD.orig)if(o.imagem&&o.imagem.startsWith("avisos/")&&!keep.has(o.imagem)){try{const g=await gh(c,o.imagem);if(g.ok){const j=await g.json();await gh(c,o.imagem,"DELETE",{message:"Remove imagem de aviso",sha:j.sha,branch:c.branch})}}catch(e){}}
-  AD.list.forEach(a=>delete a._d);AD.orig=JSON.parse(JSON.stringify(AD.list.map(adClean)));adView();msg("Publicado! Pode levar de 1 a 2 minutos para aparecer em todos os celulares.",1)}catch(e){msg(typeof e==="number"?erro(e):"Falha ao publicar. Tente de novo.")}finally{btn.disabled=false}}
-$("#adm").addEventListener("click",async e=>{const b=e.target.closest("[data-a]");if(!b)return;e.preventDefault();const a=b.dataset.a,i=+b.dataset.i,L=AD.list;
-  if(a==="sair"){localStorage.removeItem(AK);sessionStorage.removeItem(AK);AD={list:[],orig:[],sha:null,edit:-1,cfg:null,f:{imagem:null,_d:null}};adView()}
-  else if(a==="up"&&i>0){[L[i-1],L[i]]=[L[i],L[i-1]];adView()}else if(a==="dn"&&i<L.length-1){[L[i+1],L[i]]=[L[i],L[i+1]];adView()}
-  else if(a==="rm"){if(confirm("Excluir este aviso?")){L.splice(i,1);AD.edit=-1;adView()}}
+function adView(){const el=$("#adm"),L=AD.list,ed=AD.edit>=0?L[AD.edit]:null,r=AD.repo;
+  el.innerHTML=`<p class="note">Aqui você monta os avisos e gera o arquivo <b>avisos.js</b>. Nada é publicado automaticamente e nenhuma senha ou chave fica guardada neste aparelho. As imagens valem só nesta sessão: baixe-as e envie para a pasta <b>avisos/</b>.</p>
+  <h2>Avisos</h2><div class="card">${L.length?L.map((a,i)=>`<div class="av"><b>${esc(a.titulo)}</b>${a.quando?`<small>${esc(a.quando)}</small>`:""}${a.ate?`<small> · até ${esc(a.ate)}</small>`:""}${a._d?`<img class="avimg" style="max-height:120px;width:auto" alt="" src="${esc(a._d)}">`:a.imagem?`<p class="note" style="margin:4px 0 0">Imagem: ${esc(a.imagem)}</p>`:""}<div class="tools" style="margin:8px 0 0"><button class="chip" data-a="up" data-i="${i}" aria-label="Subir">↑</button><button class="chip" data-a="dn" data-i="${i}" aria-label="Descer">↓</button><button class="chip" data-a="ed" data-i="${i}">Editar</button><button class="chip" data-a="rm" data-i="${i}">Excluir</button>${a._d?`<button class="chip" data-a="img" data-i="${i}">Baixar imagem</button>`:""}</div></div>`).join(""):'<p class="note">Nenhum aviso. Adicione o primeiro abaixo.</p>'}</div>
+  <h2>${ed?"Editar aviso":"Novo aviso"}</h2><div class="card"><div class="f"><label for="ft">Título</label><input class="in" id="ft" maxlength="80" value="${esc(ed?ed.titulo:"")}"></div><div class="f"><label for="fq">Quando (opcional)</label><input class="in" id="fq" maxlength="60" placeholder="Domingo, 22/11" value="${esc(ed&&ed.quando||"")}"></div><div class="f"><label for="fx">Detalhes (opcional)</label><textarea class="in" id="fx" rows="3" maxlength="400">${esc(ed&&ed.texto||"")}</textarea></div><div class="f"><label for="fa">Mostrar até (opcional)</label><input class="in" id="fa" type="date" value="${esc(ed&&ed.ate||"")}"></div><div class="f"><label for="fi">Imagem (opcional)</label><input id="fi" type="file" accept="image/*"><img id="pv" class="avimg" style="max-height:160px;width:auto" alt="" ${AD.f._d?`src="${esc(AD.f._d)}"`:"hidden"}>${AD.f.imagem&&!AD.f._d?`<p class="note">Imagem já publicada: ${esc(AD.f.imagem)}</p>`:""}<button class="chip" data-a="rmimg" ${AD.f._d||AD.f.imagem?"":"hidden"}>Remover imagem</button></div><div class="tools"><button class="act" data-a="save">${ed?"Salvar alterações do aviso":"Adicionar aviso"}</button>${ed?'<button class="chip" data-a="cancel">Cancelar</button>':""}</div></div>
+  <h2>Publicar</h2><div class="card"><div class="tools" style="margin:0 0 8px"><button class="act" data-a="baixar">Baixar avisos.js</button><button class="chip" data-a="copiar">Copiar conteúdo</button></div><p id="am" class="note" role="status"></p>
+    <details style="margin:0"><summary>Como publicar no GitHub</summary><ol class="note"><li>Toque em “Baixar avisos.js” (e baixe também as imagens, se houver).</li><li>Abra o repositório do site no GitHub, na pasta do app.</li><li>No arquivo <b>avisos.js</b>, use o lápis (Edit) e cole o conteúdo novo, ou envie o arquivo baixado por cima.</li><li>Confirme em “Commit changes”. Em 1 a 2 minutos os avisos aparecem para todos.</li><li>As imagens vão para a pasta <b>avisos/</b>, com o mesmo nome de arquivo.</li></ol></details>
+    <div class="f"><label for="ar">Repositório (opcional, só para atalhos)</label><input class="in" id="ar" placeholder="usuario/repositorio" value="${esc(r?r.repo:"")}" autocapitalize="off"></div><div class="f"><label for="ab">Ramo (branch)</label><input class="in" id="ab" value="${esc(r?r.branch:"main")}" autocapitalize="off"></div><div class="f"><label for="ad">Pasta do app (vazio se for a raiz)</label><input class="in" id="ad" value="${esc(r?r.dir||"":"")}" autocapitalize="off"></div><button class="chip" data-a="repo">Salvar atalhos</button>${r?`<div class="tools" style="margin-top:12px"><a class="chip" href="${esc(ghUrl("avisos.js","edit"))}" target="_blank" rel="noopener">Abrir avisos.js no GitHub</a><a class="chip" href="${esc(ghUrl("avisos","upload"))}" target="_blank" rel="noopener">Abrir a pasta avisos</a></div>`:""}
+  </div>
+  <p class="note"><button class="chip" data-a="rascunho">Descartar rascunho e recomeçar dos avisos publicados</button></p>`;
+  $("#fi").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=await shrink(f);AD.f={imagem:"avisos/aviso-"+Date.now()+".jpg",_d:d};adView();msg("Imagem pronta. Ela será baixada junto com o avisos.js.",1)}catch(x){msg("Não consegui ler essa imagem.")}}}
+$("#adm").addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;e.preventDefault();const a=b.dataset.a,i=+b.dataset.i,L=AD.list;
+  if(a==="up"&&i>0){[L[i-1],L[i]]=[L[i],L[i-1]];saveDraft();adView()}
+  else if(a==="dn"&&i<L.length-1){[L[i+1],L[i]]=[L[i],L[i+1]];saveDraft();adView()}
+  else if(a==="rm"){if(confirm("Excluir este aviso?")){L.splice(i,1);AD.edit=-1;saveDraft();adView()}}
   else if(a==="ed"){AD.edit=i;AD.f={imagem:L[i].imagem||null,_d:L[i]._d||null};adView();scrollTo(0,document.body.scrollHeight)}
   else if(a==="cancel"){AD.edit=-1;AD.f={imagem:null,_d:null};adView()}
-  else if(a==="rmimg"){AD.f={imagem:null,_d:null};$("#pv").hidden=true;b.hidden=true;$("#fi").value=""}
-  else if(a==="save"){const t=$("#ft").value.trim();if(!t){msg("Escreva o título do aviso.");return}const n={titulo:t,quando:$("#fq").value.trim(),texto:$("#fx").value.trim(),ate:$("#fa").value,imagem:AD.f.imagem||undefined,_d:AD.f._d||undefined};if(AD.edit>=0)L[AD.edit]=n;else L.push(n);AD.edit=-1;AD.f={imagem:null,_d:null};adView();msg("Aviso salvo. Toque em “Publicar alterações” para enviar a todos.",1)}
-  else if(a==="pub")admPub();
-  else if(a==="reload"){try{await admLoad();AD.edit=-1;adView();msg("Avisos recarregados.",1)}catch(x){msg(erro(x))}}
-  else if(a==="manual"){dl("avisos.js","data:text/javascript;charset=utf-8,"+encodeURIComponent("window.AVISOS = "+JSON.stringify(L.map(adClean),null,2)+";\n"));L.forEach(x=>{if(x._d)dl(x.imagem.split("/").pop(),x._d)});toast("Arquivos baixados. Envie avisos.js para a raiz e as imagens para a pasta avisos.")}});
-let admOk=0;function admInit(){if(admOk)return;admOk=1;const c=cfgGet();if(c){AD.cfg=c;admLoad().then(adView).catch(()=>{AD.cfg=null;adView()})}else adView()}
+  else if(a==="rmimg"){AD.f={imagem:null,_d:null};adView()}
+  else if(a==="img"){if(L[i]._d)dl((L[i].imagem||"aviso.jpg").split("/").pop(),L[i]._d)}
+  else if(a==="save"){const t=$("#ft").value.trim();if(!t){msg("Escreva o título do aviso.");return}const n={titulo:t,quando:$("#fq").value.trim(),texto:$("#fx").value.trim(),ate:$("#fa").value,imagem:AD.f.imagem||undefined,_d:AD.f._d||undefined};if(AD.edit>=0)L[AD.edit]=n;else L.push(n);AD.edit=-1;AD.f={imagem:null,_d:null};saveDraft();adView();msg("Aviso salvo neste aparelho. Baixe o avisos.js para publicar.",1)}
+  else if(a==="baixar"){try{const u=URL.createObjectURL(new Blob([avisosTxt()],{type:"text/javascript;charset=utf-8"}));dl("avisos.js",u);setTimeout(()=>URL.revokeObjectURL(u),4000);L.forEach(x=>{if(x._d)dl((x.imagem||"aviso.jpg").split("/").pop(),x._d)});toast("Baixado. Envie para o site no GitHub.")}catch(x){msg("Não foi possível baixar neste aparelho.")}}
+  else if(a==="copiar"){copy(avisosTxt())}
+  else if(a==="repo"){const n={repo:$("#ar").value.trim(),branch:$("#ab").value.trim()||"main",dir:$("#ad").value.trim().replace(/^\/|\/$/g,"")};if(n.repo&&!/^[^\s/]+\/[^\s/]+$/.test(n.repo)){msg("Escreva o repositório no formato usuario/repositorio.");return}store.set(REPO,JSON.stringify(n));AD.repo=n.repo?n:null;adView();msg("Atalhos salvos neste aparelho.",1)}
+  else if(a==="rascunho"){if(confirm("Descartar as alterações não publicadas?")){try{localStorage.removeItem(DRAFT)}catch(x){}AD.list=clone(window.AVISOS||[]);AD.edit=-1;AD.f={imagem:null,_d:null};adView()}}});
+let admOk=0;function admInit(){if(admOk)return;admOk=1;AD.repo=repoGet();let d=null;try{d=JSON.parse(store.get(DRAFT)||"null")}catch(e){}AD.list=Array.isArray(d)?d:clone(window.AVISOS||[]);adView()}
 
 // Instalação e modo offline (PWA)
 let dp;addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;$("#inst").hidden=false});
